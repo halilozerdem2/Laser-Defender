@@ -13,13 +13,13 @@ public class Health : MonoBehaviour
    
     [SerializeField] bool applyCameraShake;
     ScreenShake cameraShake;
-
+    AudioPlayer audioPlayer;
     ScoreKeeper scoreKeeper;
 
     private void Awake()
     {
         cameraShake = Camera.main.GetComponent<ScreenShake>();
-
+        audioPlayer = FindObjectOfType<AudioPlayer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
 
@@ -32,6 +32,7 @@ public class Health : MonoBehaviour
             
             TakeDamage(damageDealer.GetDamage());
             PLayHitEffect();
+            audioPlayer.PlayDamageClip();
             ShakeCamera();
             damageDealer.Hit();
         }
