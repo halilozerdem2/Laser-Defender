@@ -6,8 +6,8 @@ using Random = UnityEngine.Random;
 
 public class ScreenShake : MonoBehaviour
 {
-    [SerializeField] private float shakeDuration = 0.5f;
-    [SerializeField] private float shakeMagnitude = 0.5f;
+    public float shakeDuration = 0.5f;
+    public float shakeMagnitude = 0.3f;
     
     private Vector3 initialPositon;
 
@@ -19,6 +19,8 @@ public class ScreenShake : MonoBehaviour
     {
         StartCoroutine(Shake());
     }
+    // Random.insideUnitCircle => Sets the position to be somewhere inside a circle
+    //                            with radius 5 and the center at zero
 
     IEnumerator Shake()
     {
